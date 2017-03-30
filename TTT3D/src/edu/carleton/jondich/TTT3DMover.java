@@ -57,4 +57,14 @@ public class TTT3DMover {
     public List<TTT3DMove> forcingMoves(TTT3DBoard board) {
         return new ArrayList<TTT3DMove>();
     }
+
+    /**
+     * @param board a 3D tic-tac-toe board, including existing X and O positions
+     *              as well as a marker for whose turn comes next
+     * @return the move that this object determines would be the best choice for the
+     * board's current player.
+     */
+    public TTT3DMove bestMove(TTT3DBoard board) {
+        return new TTT3DMove(0, 0, 0, board.getWhoseTurn());
+    }
 }

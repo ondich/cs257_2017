@@ -51,6 +51,13 @@ public class TTT3DBoard {
     }
 
     /**
+     * @return 'X' or 'O', depending on whose turn it is
+     */
+    public Character getWhoseTurn() {
+        return this.whoseTurn;
+    }
+
+    /**
      * @param level the level of the board position
      * @param row the row of the board position
      * @param column the column of the board position
