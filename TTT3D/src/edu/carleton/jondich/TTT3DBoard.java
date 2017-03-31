@@ -101,8 +101,6 @@ public class TTT3DBoard {
      * @throws IllegalArgumentException if the move position is out of bounds or
      * if it's not currently the move's player's turn, in which case this
      * game board is not changed
-     * @throws IllegalStateException if the move position is already occupied,
-     * in which case this game board is not changed
      */
     public void makeMove(TTT3DMove move) {
         if (move.row < 0 || move.row >= BOARD_SIZE) {
