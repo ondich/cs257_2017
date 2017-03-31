@@ -98,19 +98,20 @@ public class TTT3DBoard {
      * this game board reflects the change and the whoseTurn changes to the
      * other player.
      * @param move the move to be made
-     * @throws IllegalArgumentException if the move position is out of bounds or
-     * if it's not currently the move's player's turn, in which case this
-     * game board is not changed
+     * @throws IndexOutOfBoundsException if the move position is out of bounds, in
+     * which case this game board is not changed
+     * @throws IllegalArgumentException if it's not currently the move's player's
+     * turn, in which case this game board is not changed
      */
     public void makeMove(TTT3DMove move) {
         if (move.row < 0 || move.row >= BOARD_SIZE) {
-            throw new IllegalArgumentException("Illegal row number " + move.row);
+            throw new IndexOutOfBoundsException("Illegal row number " + move.row);
         }
         if (move.column < 0 || move.column >= BOARD_SIZE) {
-            throw new IllegalArgumentException("Illegal column number " + move.column);
+            throw new IndexOutOfBoundsException("Illegal column number " + move.column);
         }
         if (move.level < 0 || move.level >= BOARD_SIZE) {
-            throw new IllegalArgumentException("Illegal level number " + move.level);
+            throw new IndexOutOfBoundsException("Illegal level number " + move.level);
         }
         if (move.player != this.whoseTurn) {
             throw new IllegalArgumentException("It's not " + move.player + "'s turn");
