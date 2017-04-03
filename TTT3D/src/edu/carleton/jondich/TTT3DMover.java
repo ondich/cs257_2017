@@ -37,9 +37,10 @@ public class TTT3DMover {
     /**
      * @param board a 3D tic-tac-toe board, including existing X and O positions
      *              as well as a marker for whose turn comes next
-     * @return a (possibly empty) list of moves that the non-current player could take
-     * to win the game in a single turn. That is, these are positions where the current
-     * player should play to avoid losing on the opponent's next turn.
+     * @return a (possibly empty) list of moves that the current player must take
+     * to stop the opponent from winning the game immediately. Note that this means
+     * that the player field of each returned TTT3DMove object will be equal to
+     * the current player.
      */
     public List<TTT3DMove> blockingMoves(TTT3DBoard board) {
         return new ArrayList<TTT3DMove>();
