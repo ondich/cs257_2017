@@ -44,16 +44,16 @@ public class TTT3DBoard {
     }
 
     /**
-     * Initialize an empty game board. If whoStarts is 'X', then 'X' will
+     * Initialize an empty game board. If startingPlayer is 'X', then 'X' will
      * have the first turn. Otherwise, 'O' will move first.
      */
-    public TTT3DBoard(Character whoStarts) {
+    public TTT3DBoard(Character startingPlayer) {
         int squareArrayLength = BOARD_SIZE * BOARD_SIZE * BOARD_SIZE;
         this.squareValues = new Character[squareArrayLength];
         for (int k = 0; k < squareArrayLength; k++) {
             this.squareValues[k] = EMPTY_SQUARE;
         }
-        this.whoseTurn = (whoStarts == 'X' ? 'X' : 'O');
+        this.whoseTurn = (startingPlayer == 'X' ? 'X' : 'O');
     }
 
     /**
@@ -64,6 +64,31 @@ public class TTT3DBoard {
         int squareArrayLength = BOARD_SIZE * BOARD_SIZE * BOARD_SIZE;
         this.squareValues = new Character[squareArrayLength];
         System.arraycopy(otherBoard.squareValues, 0, this.squareValues, 0, squareArrayLength);
+    }
+
+    /**
+     * Initializes this board from the contents of the specified file.
+     *
+     * The file format for a board consists of five lines of text. The first four lines
+     * represent the four rows of the 3D tic-tac-toe board, with X's, O's, hyphens (to
+     * represent empty squares), and space characters as needed for human readability.
+     * The fifth line should contain only an X or an O, to indicate whose turn it is.
+     * For example:<br><br>
+     *     <pre>
+     *     XO-- X--- X--- ----
+     *     X--- ---- ---- ----
+     *     ---- -O-- ---- -O--
+     *     XO-- ---- ---- ----
+     *     O
+     *     </pre>
+     *
+     *     represents a board where X has taken 4 turns, O has taken three turns, and
+     *     it's O's turn now. You may use space characters in any way you wish. Any
+     *     characters other than X, O, -, space, or newline should cause loadFromFile
+     *     to throw an exception.
+     *     @param fileName the file containing the board to be loaded.
+     */
+    public void loadFromFile(String fileName) {
     }
 
     /**
