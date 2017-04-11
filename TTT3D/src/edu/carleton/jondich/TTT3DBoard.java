@@ -104,16 +104,17 @@ public class TTT3DBoard {
      * @param column the column of the board position
      * @return the value ('X', 'O', or EMPTY_SQUARE) located at the specified
      * position on the game board
+     * @throws IndexOutOfBoundsException if the specified position is out of bounds
      */
     public Character valueInSquare(int level, int row, int column) {
         if (level < 0 || level >= BOARD_SIZE) {
-            throw new IllegalArgumentException("Illegal level number " + level);
+            throw new IndexOutOfBoundsException("Illegal level number " + level);
         }
         if (row < 0 || row >= BOARD_SIZE) {
-            throw new IllegalArgumentException("Illegal row number " + row);
+            throw new IndexOutOfBoundsException("Illegal row number " + row);
         }
         if (column < 0 || column >= BOARD_SIZE) {
-            throw new IllegalArgumentException("Illegal column number " + column);
+            throw new IndexOutOfBoundsException("Illegal column number " + column);
         }
         return this.squareValues[indexForPosition(level, row, column)];
     }
@@ -155,6 +156,9 @@ public class TTT3DBoard {
      * then row-major order.
      */
     private int indexForPosition(int level, int row, int column) {
+        assert level >= 0 && level < BOARD_SIZE;
+        assert row >= 0 && row < BOARD_SIZE;
+        assert column >= 0 && column < BOARD_SIZE;
         return BOARD_SIZE * BOARD_SIZE * level + BOARD_SIZE * row + column;
     }
 }
