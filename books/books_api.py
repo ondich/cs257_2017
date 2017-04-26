@@ -13,7 +13,6 @@ import flask
 import json
 import config
 import psycopg2
-import urllib
 
 app = flask.Flask(__name__, static_folder='static', template_folder='templates')
 
@@ -48,6 +47,7 @@ def set_headers(response):
     response.headers['Access-Control-Allow-Origin'] = '*'
     return response
 
+# @ symbol indicates a "python decorator"
 @app.route('/authors/') 
 def get_authors():
     '''
