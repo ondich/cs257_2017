@@ -54,9 +54,20 @@ def get_authors():
     Returns a list of all the authors in our database, in alphabetical
     order by last name, then first_name. See get_author_by_id below
     for description of the author resource representation.
+
+        http://.../authors/
+        http://.../authors/?sort=last_name
+        http://.../authors/?sort=birth_year
     '''
+    
     query = '''SELECT id, first_name, last_name, birth_year, death_year
-               FROM authors ORDER BY last_name, first_name'''
+               FROM authors ORDER BY '''
+               
+    sort_argument = flask.request.args.get('sort')
+    if sort_argument == 'birth_year':
+        query += 'birth_year'
+    else:
+        query += 'last_name, first_name' + x
 
     author_list = []
     for row in _fetch_all_rows_for_query(query):
@@ -195,5 +206,5 @@ if __name__ == '__main__':
 
     host = sys.argv[1]
     port = sys.argv[2]
-    app.run(host=host, port=port)
+    app.run(host=host, port=int(port), debug=True)
 
