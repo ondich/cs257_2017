@@ -67,7 +67,7 @@ def get_authors():
     if sort_argument == 'birth_year':
         query += 'birth_year'
     else:
-        query += 'last_name, first_name' + x
+        query += 'last_name, first_name'
 
     author_list = []
     for row in _fetch_all_rows_for_query(query):
