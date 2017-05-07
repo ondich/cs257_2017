@@ -1,5 +1,5 @@
 /*
- *  books.js
+ *  books-config.js
  *  Jeff Ondich, 25 April 2017
  *
  *  Configuration file for the books & authors web application
