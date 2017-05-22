@@ -15,6 +15,7 @@ import javafx.scene.shape.Rectangle;
 public abstract class Sprite extends Group {
     final private boolean SHOW_BORDER = true;
     private Rectangle border;
+    Point2D size;
 
     // In addition to name and velocity, each Sprite also has a position
     // and size. Those attributes are a part of the Group superclass.
@@ -22,6 +23,7 @@ public abstract class Sprite extends Group {
     private Point2D velocity;
 
     public Sprite() {
+        size = new Point2D(0, 0);
         if (SHOW_BORDER) {
             this.border = new Rectangle(0.0, 0.0, 0.0, 0.0);
             this.border.setFill(null);
@@ -57,12 +59,11 @@ public abstract class Sprite extends Group {
     }
 
     public final Point2D getSize() {
-        Bounds bounds = this.getLayoutBounds();
-        Point2D size = new Point2D(bounds.getWidth(), bounds.getHeight());
-        return size;
+        return this.size;
     }
 
     public void setSize(double width, double height) {
+        this.size = new Point2D(width, height);
         if (SHOW_BORDER) {
             this.border.setWidth(width);
             this.border.setHeight(height);
