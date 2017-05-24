@@ -123,8 +123,4 @@ public class Controller implements EventHandler<KeyEvent> {
         }
         this.paused = !this.paused;
     }
-
-    public void onNewBallButton(ActionEvent actionEvent) {
-
-    }
 }

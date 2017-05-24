@@ -34,7 +34,6 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("pong.fxml"));
         Parent root = (Parent)loader.load();
         Controller controller = loader.getController();
-//        controller.initialize();
 
         // Set up a KeyEvent handler so we can respond to keyboard activity.
         root.setOnKeyPressed(controller);
@@ -72,8 +71,8 @@ public class Main extends Application {
         // which none of the nodes has the focus. Thus, KeyEvents have no target, so no bubbling of
         // KeyEvents occurs, and our KeyEvent handler in Controller never gets called.
         //
-        // Once I understood what's going on, I saw two obvious solutions that are very easy to implement
-        // here in the Application's start method. Both involve making the root node focusable. I have
+        // Once I understood what's going on, I saw an obvious solution that is easy to implement
+        // here in the Application's start method. It involves giving the root node focus. I have
         // also experimented with making the paddle (a Rectangle) and the ball (a Circle) focus-traversable
         // in Controller.initialize, and those work, too. We just need one node in the event
         // dispatch chain to be able to have the focus, and then it receives the focus when the Stage is
@@ -81,16 +80,14 @@ public class Main extends Application {
         // KeyEvent handler method.
         //
         // Want to play around with these ideas? Try commenting the Button object in pong.fxml in and out
-        // while commenting the Solution (1) and Solution (2) lines below in and out as well.
-
-        // Solution (1): make the root node "focus traversable" from the beginning.
-        // root.setFocusTraversable(true);
+        // while commenting the Solution below in and out as well.
 
         primaryStage.setTitle("Kinda Pong");
         primaryStage.setScene(new Scene(root, 700, 500));
         primaryStage.show();
 
-        // Solution (2): once the Stage is displayed, explicitly put the focus on the root node.
+        // Solution: once the Stage is displayed, explicitly put the focus on the root node.
+        // You could, alternatively, go to Controller.initialize and do this.paddle.requestFocus().
         //root.requestFocus();
     }
 
